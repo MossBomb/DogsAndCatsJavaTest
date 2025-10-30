@@ -1,5 +1,5 @@
 
-public class Dog extends Animal{
+public class Dog extends Animal {
 
 	@Override
 	public void speak() {
@@ -8,12 +8,19 @@ public class Dog extends Animal{
 	
 	@Override
 	public String toString() {
-		return "Dog with name: " + name;
+		return "Dog with name: " + super.getName();
 	}
 	
 	
 	public Dog(String n) {
 		super(n);
 	}
+	
+	@Override
+	public String getName() {
+		return super.getName();
+	}
+
+	
 	
 }

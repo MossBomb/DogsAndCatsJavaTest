@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Arrays;
 
 public class AnimalRunner {
 	
@@ -8,6 +10,8 @@ public class AnimalRunner {
 		Dog d = new Dog("Dog");
 		Cat elsa = new Cat("Elsa");
 		Dog link = new Dog("Link");
+		Dog spot = new Dog("Spot");
+		Dog s = new Dog("Spot");
 		
 //		System.out.println(c.toString());
 //		c.speak();
@@ -20,11 +24,12 @@ public class AnimalRunner {
 		cats[0] = c;
 		cats[1] = elsa;
 		
-		Animal[] dogsAndCats = new Animal[4];
+		Animal[] dogsAndCats = new Animal[5];
 		dogsAndCats[0] = d;
 		dogsAndCats[1] = c;
 		dogsAndCats[2] = link;
 		dogsAndCats[3] = elsa;
+		dogsAndCats[4] = spot;
 		
 //		dogsAndCats[0].speak();
 		
@@ -41,13 +46,18 @@ public class AnimalRunner {
 		
 		dogsAndCatsCollection.add(elsa);
 		dogsAndCatsCollection.add(link);
+		dogsAndCatsCollection.add(d);
+		dogsAndCatsCollection.add(c);
+		dogsAndCatsCollection.add(spot);
+		dogsAndCatsCollection.add(s);
+
 //		dogsAndCatsCollection.get(0).speak();
 		
 		System.out.println();
 		
-		System.out.println("Dogs and Cats list ------");
+		System.out.println("Dogs and Cats Array ------");
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < dogsAndCats.length; i++) {
 			System.out.println(dogsAndCats[i].toString());
 			dogsAndCats[i].speak();
 		}
@@ -56,10 +66,50 @@ public class AnimalRunner {
 		
 		System.out.println("Dogs and Cats collection ------");
 		
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < dogsAndCatsCollection.size(); i++) {
 			System.out.println(dogsAndCatsCollection.get(i).toString());
 			dogsAndCatsCollection.get(i).speak();
 		}
 		
+		System.out.println();
+		
+		System.out.println("Dogs and Cats Array Sorted ------");
+		
+		Arrays.sort(dogsAndCats);
+		
+		for (int i = 0; i < dogsAndCats.length; i++) {
+			System.out.println(dogsAndCats[i].toString());
+			dogsAndCats[i].speak();
+		}
+		
+		
+		System.out.println();
+		
+		System.out.println("Dogs and Cats collection Sorted ------");
+		
+		
+		Collections.sort(dogsAndCatsCollection);
+		
+		for (int i = 0; i < dogsAndCatsCollection.size(); i++) {
+			System.out.println(dogsAndCatsCollection.get(i).toString());
+			dogsAndCatsCollection.get(i).speak();
+		}
+		
+		System.out.println();
+		
+		System.out.println("Dogs and Cats collection Distinct ------");
+		
+		List<Animal> temp = new ArrayList<>();
+		for (int i = 0; i < dogsAndCatsCollection.size(); i++) {
+			if (!(temp.contains(dogsAndCatsCollection.get(i)))) {
+				temp.add(dogsAndCatsCollection.get(i));
+			}
+		}
+		
+		dogsAndCatsCollection = temp;
+		for (int i = 0; i < dogsAndCatsCollection.size(); i++) {
+			System.out.println(dogsAndCatsCollection.get(i).toString());
+			dogsAndCatsCollection.get(i).speak();
+		}
 	}
 }

@@ -24,12 +24,15 @@ public class AnimalRunner {
 		cats[0] = c;
 		cats[1] = elsa;
 		
-		Animal[] dogsAndCats = new Animal[5];
+		Animal[] dogsAndCats = new Animal[8];
 		dogsAndCats[0] = d;
 		dogsAndCats[1] = c;
 		dogsAndCats[2] = link;
 		dogsAndCats[3] = elsa;
 		dogsAndCats[4] = spot;
+		dogsAndCats[5] = spot;
+		dogsAndCats[6] = elsa;
+		dogsAndCats[7] = spot;
 		
 //		dogsAndCats[0].speak();
 		
@@ -95,6 +98,47 @@ public class AnimalRunner {
 			dogsAndCatsCollection.get(i).speak();
 		}
 		
+		
+		
+		System.out.println();
+		
+		System.out.println("Dogs and Cats Array Distinct ------");
+		
+		Animal[] tempArr = new Animal[dogsAndCats.length];
+		boolean add = true;
+		int addIndex = 0;
+		for (int i = 0; i < dogsAndCats.length; i++) {
+			for (int j = 0; j < tempArr.length; j++) {
+				if ((!(tempArr[j] == null)) && dogsAndCats[i].equals(tempArr[j])) {
+					add = false;
+					//System.out.println("Breaking because " + dogsAndCats[i].getName() + " is in list already");
+				}
+			}
+			if (add) {
+				tempArr[addIndex] = dogsAndCats[i];
+				addIndex++;
+				//System.out.println("Add Index " + addIndex + " of " + dogsAndCats[i].getName());
+			}
+			add = true;
+		}
+		
+		for (int j = 0; j < tempArr.length; j++) {
+			if (tempArr[j] == null) {
+				addIndex = j;
+				//System.out.println("Cutoff " + addIndex);
+				break;
+			}
+		}
+		
+		dogsAndCats = Arrays.copyOf(tempArr, addIndex);
+		
+		for (int i = 0; i < dogsAndCats.length; i++) {
+			System.out.println(dogsAndCats[i].toString());
+			dogsAndCats[i].speak();
+		}
+		
+		
+		
 		System.out.println();
 		
 		System.out.println("Dogs and Cats collection Distinct ------");
@@ -110,6 +154,8 @@ public class AnimalRunner {
 		for (int i = 0; i < dogsAndCatsCollection.size(); i++) {
 			System.out.println(dogsAndCatsCollection.get(i).toString());
 			dogsAndCatsCollection.get(i).speak();
+			
+			
 		}
 	}
 }

@@ -25,6 +25,10 @@ public class Animal implements Comparable<Animal>{
 		return this.name.compareTo(o.name);
 	}
 	
+	public void react(Animal o) {
+		System.out.println("AHH! A " + o.getName());
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (o == null) {
